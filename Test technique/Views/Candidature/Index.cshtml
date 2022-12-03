@@ -1,0 +1,98 @@
+﻿@model IEnumerable<Test_technique.Models.Candidature>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+
+    <div class="float-right">
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Filtrer" aria-label="Filtrer">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Filtrer</button>
+        </form>
+    </div>
+
+    <h1>Liste des candidatures</h1>
+
+    <p>
+        <a asp-action="Create" class="btn btn-primary">Ajouter une candidature</a>
+    </p>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Nom)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Prenom)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Mail)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Telephone)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.NiveauEtude)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.NbrAnneesExperience)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DernierEmployeur)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CVURL)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nom)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Prenom)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Mail)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Telephone)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NiveauEtude)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NbrAnneesExperience)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DernierEmployeur)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CVURL)
+                    </td>
+                    <td>
+                        <a asp-action="Details" asp-route-id="@item.CondidatureID">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.CondidatureID">Supprimer</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</body>
+</html>
