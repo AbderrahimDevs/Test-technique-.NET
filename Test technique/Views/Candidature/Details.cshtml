@@ -1,66 +1,88 @@
 ﻿@model Test_technique.Models.Candidature
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Détails candidature";
 }
 
-<h1>Details</h1>
+<style>
+    body {
+        height: 100%;
+        width: 100%
+    }
+</style>
+
+<h1>Le CV du candidature</h1>
+
+<div class="ViewPDF" style="height:1200px"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.3/pdfobject.min.js" integrity="sha512-bHO4iqeyo1tN+C4qnbroCQ5Hxi3aJcEszT0iOt2nkuXZXQf369U3PUsnoN/ebnKQ5V2iS326OIv9pgXxL+F/kQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script type="text/javascript">
+    var namer = "@Model.Nom.ToUpper() @Model.Prenom.ToUpper()";
+    if (PDFObject.supportsPDFs) {
+        PDFObject.embed("/CVs/" + namer + "/@Model.CVURL", ".ViewPDF");
+    } else {
+        alert("This browser not support pdf");
+    }
+
+</script>
 
 <div>
-    <h4>Candidature</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Nom)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Nom)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Prenom)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Prenom)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Mail)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Mail)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Telephone)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Telephone)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.NiveauEtude)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.NiveauEtude)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.NbrAnneesExperience)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.NbrAnneesExperience)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.DernierEmployeur)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.DernierEmployeur)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.CVURL)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.CVURL)
-        </dd>
-    </dl>
+    <a asp-action="Index" class="btn btn-outline-primary mt-1">Retour vers la liste</a>
 </div>
-<div>
-    @*<a asp-action="Edit" asp-route-id="@Model.CondidatureID">Edit</a> |*@
-    <a asp-action="Index">Back to List</a>
-</div>
+
+@*<div>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Nom)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Nom)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Prenom)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Prenom)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Mail)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Mail)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Telephone)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Telephone)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.NiveauEtude)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.NiveauEtude)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.NbrAnneesExperience)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.NbrAnneesExperience)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.DernierEmployeur)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.DernierEmployeur)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.CVURL)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.CVURL)
+            </dd>
+        </dl>
+    </div>
+    <div>
+        <a asp-action="Edit" asp-route-id="@Model.CondidatureID">Edit</a> |
+        <a asp-action="Index">Back to List</a>
+    </div>*@

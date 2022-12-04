@@ -19,7 +19,7 @@
             Étape 1  :
         </div>
         <div class="content">
-            <form method="post" asp-action="Create">
+            <form method="post" asp-action="Create" enctype="multipart/form-data">
                 <div class="user-details">
                     <div class="input-box">
                         <span class="details">Nom <span style="color:red">*</span></span>
@@ -32,12 +32,12 @@
                         <span asp-validation-for="Prenom" class="text-danger"></span>
                     </div>
                     <div class="input-box">
-                        <span class="details">Email <span style="color:red">*</span></span></span>
+                        <span class="details">Email <span style="color:red">*</span></span>
                         <input type="email" asp-for="Mail" placeholder="Entrer votre email" required>
                         <span asp-validation-for="Mail" class="text-danger"></span>
                     </div>
                     <div class="input-box">
-                        <span class="details">Téléphone <span style="color:red">*</span></span></span>
+                        <span class="details">Téléphone <span style="color:red">*</span></span>
                         <input type="tel" asp-for="Telephone" placeholder="Entrer votre téléphone" required>
                         <span asp-validation-for="Telephone" class="text-danger"></span>
                     </div>
@@ -53,12 +53,12 @@
                         <span asp-validation-for="NiveauEtude" class="text-danger"></span>
                     </div>
                     <div class="input-box">
-                        <span class="details">Nombre d'années d'expérience</span>
-                        <input type="number" asp-for="NbrAnneesExperience" placeholder="Entrer votre Nombre d'années d'expérience" required>
+                        <span class="details">Nombre d'années d'expérience <span style="color:red">*</span></span>
+                        <input type="number" min="0" max="50" asp-for="NbrAnneesExperience" placeholder="Entrer votre Nombre d'années d'expérience" required>
                         <span asp-validation-for="NbrAnneesExperience" class="text-danger"></span>
                     </div>
                     <div class="input-box">
-                        <span class="details">Dernier employeur</span>
+                        <span class="details">Dernier employeur <span style="color:red">*</span></span>
                         <input type="text" asp-for="DernierEmployeur" placeholder="Entrer votre dernier employeur" required>
                         <span asp-validation-for="DernierEmployeur" class="text-danger"></span>
                     </div>
@@ -67,15 +67,15 @@
                     Étape 2 :
                     <div class="user-details">
                         <div class="input-box">
-                            <span class="details">Uploader votre CV</span>
-                            <input type="file" accept="application/pdf,image/*" asp-for="CVURL" class="upload-box">
-                            <span asp-validation-for="CVURL" class="text-danger"></span>
+                            <span class="details">Uploader votre CV <span style="color:red">*</span></span> 
+                            <input type="file" name="File" asp-for="File" required>
+                            <span asp-validation-for="File" class="text-danger"></span>
                         </div>
                     </div>
                 </div>
                 <div class="button">
-                    <input type="submit" asp-action="AffichierResumer" value="Suivant">
-                    <a asp-action="Index">Back to List</a>
+                    <input type="submit" value="Enregistrer">
+                    <a asp-action="Index" class="btn btn-outline-primary mt-1">Retour vers la liste</a>
                 </div>
             </form>
         </div>
