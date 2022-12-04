@@ -13,7 +13,7 @@
 
 <h1>Le CV du candidature</h1>
 
-<div class="ViewPDF" style="height:1200px"></div>
+<div class="ViewPDF" style="height:750px;width:500px;float:right;margin-top:10px"></div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.3/pdfobject.min.js" integrity="sha512-bHO4iqeyo1tN+C4qnbroCQ5Hxi3aJcEszT0iOt2nkuXZXQf369U3PUsnoN/ebnKQ5V2iS326OIv9pgXxL+F/kQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script type="text/javascript">
     var namer = "@Model.Nom.ToUpper() @Model.Prenom.ToUpper()";
@@ -26,10 +26,6 @@
 </script>
 
 <div>
-    <a asp-action="Index" class="btn btn-outline-primary mt-1">Retour vers la liste</a>
-</div>
-
-@*<div>
         <hr />
         <dl class="row">
             <dt class="col-sm-2">
@@ -74,15 +70,14 @@
             <dd class="col-sm-10">
                 @Html.DisplayFor(model => model.DernierEmployeur)
             </dd>
-            <dt class="col-sm-2">
+            <dt class="col-sm-2" hidden>
                 @Html.DisplayNameFor(model => model.CVURL)
             </dt>
-            <dd class="col-sm-10">
+            <dd class="col-sm-10" hidden>
                 @Html.DisplayFor(model => model.CVURL)
             </dd>
         </dl>
     </div>
-    <div>
-        <a asp-action="Edit" asp-route-id="@Model.CondidatureID">Edit</a> |
-        <a asp-action="Index">Back to List</a>
-    </div>*@
+<div>
+    <a asp-action="Index" class="btn btn-outline-primary mt-1">Retour vers la liste</a>
+</div>
