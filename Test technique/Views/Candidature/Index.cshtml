@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<Test_technique.Models.Candidature>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "liste candidatures";
 }
 
 <!DOCTYPE html>
@@ -16,9 +16,10 @@
 <body>
 
     <div class="float-right">
-        <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Filtrer" aria-label="Filtrer">
+        <form class="form-inline my-2 my-lg-0" asp-action="Rechercher" asp-controller="Candidature">
+            <input class="form-control mr-sm-2" type="search" name="motRechercher" placeholder="Filtrer" aria-label="Filtrer">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Filtrer</button>
+            <button asp-action="Index" asp-controller="Candidature" class="btn btn-info ml-1">Afficher tout</button>
         </form>
     </div>
 
@@ -29,7 +30,7 @@
     </p>
 
     <table class="table">
-        <thead>
+        <thead class="thead-dark">
             <tr>
                 <th>
                     @Html.DisplayNameFor(model => model.Nom)
@@ -52,10 +53,10 @@
                 <th>
                     @Html.DisplayNameFor(model => model.DernierEmployeur)
                 </th>
-                <th>
+                <th hidden>
                     @Html.DisplayNameFor(model => model.CVURL)
                 </th>
-                <th></th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>
@@ -83,12 +84,12 @@
                     <td>
                         @Html.DisplayFor(modelItem => item.DernierEmployeur)
                     </td>
-                    <td>
+                    <td hidden>
                         @Html.DisplayFor(modelItem => item.CVURL)
                     </td>
                     <td>
-                        <a asp-action="Details" asp-route-id="@item.CondidatureID">Details</a> |
-                        <a asp-action="Delete" asp-route-id="@item.CondidatureID">Supprimer</a>
+                        <a class="btn btn-success w-100 h-25 mb-1 btn-sm" asp-action="Details" asp-route-id="@item.CondidatureID">Voir CV</a>
+                        <a class="btn btn-danger w-100 h-25 btn-sm" asp-action="Delete" asp-route-id="@item.CondidatureID">Supprimer</a>
                     </td>
                 </tr>
             }

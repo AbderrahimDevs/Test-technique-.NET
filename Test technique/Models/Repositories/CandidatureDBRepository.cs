@@ -33,6 +33,12 @@ namespace Test_technique.Models.Repositories
             return _db.Candidatures.ToList();
         }
 
+        public IList<Candidature> List(string MotRechercher)
+        {
+            List<Candidature> liste = _db.Candidatures.Where(c => c.Nom.Contains(MotRechercher) || c.Prenom.Contains(MotRechercher) || c.Mail.Contains(MotRechercher) || c.Telephone.Contains(MotRechercher)).ToList();
+            return liste;
+        }
+
         public void SupprimerCandidature(Guid id)
         {
             Candidature candidature = Find(id);
