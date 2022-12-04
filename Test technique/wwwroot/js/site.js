@@ -2,11 +2,3 @@
 // for details on configuring this project to bundle and minify static web assets.
 
 // Write your JavaScript code.
-
-
-function SelectChangeValidColor() {
-    var NiveauEtude = document.getElementById("NvEtude").value;
-    if (NiveauEtude != "Choisissez votre niveau d'études") {
-        NiveauEtude.style.borderColor = "red";
-    }
-}
